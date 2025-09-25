@@ -1,7 +1,7 @@
 #Description: This folder is for a password security checking application.
 
-##Contents:
+##Contents:  
 -ReadMe.md  
--initial .py file  
+-Password_Checker.py file  
 
 
