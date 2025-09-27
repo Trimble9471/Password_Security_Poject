@@ -7,26 +7,37 @@ import re
 def password_strength(password):
     score = 0
     strength = ""
+    recommendations = []
 
     #Parameter 1: Check to see if password is >= 8
     if len(password) >= 8:
         score += 1
+    else:
+        recommendations.append("Use atleast 8 characters.")
 
     #Parameter 2: Searches password for atleast 1 uppercase letter
     if re.search(r"[A-Z]", password):
         score += 1
+    else:
+        recommendations.append("Use atleast 1 uppercase letter.")
 
     #Parameter 3: Searches password for atleast 1 lowercase letter
     if re.search(r"[a-z]", password):
         score += 1
+    else:
+        recommendations.append("Use atleast 1 lowercase letter.")
 
-    #Parameter 4: Searches password for atleast 1 digit
+    #Parameter 4: Searches password for atleast 1 digit/number
     if re.search(r"\d", password):
         score += 1
+    else:
+        recommendations.append("Use atleast 1 number.")
 
     #Parameter 5: Searches password for atleast 1 special character
     if re.search(r"[!@#$%^&*(),./\":{}|<>]", password):
         score += 1
+    else:
+        recommendations.append("Use atleast 1 special character.")
 
     #Define strength level based on score
     #\u is for Unicode emoji
@@ -38,7 +49,12 @@ def password_strength(password):
         strength = "\u2705 Strong Password"
 
     #Display the password strength and score
-    return f"Password strength: {strength} (score: {score}/5)"
+    result = f"Password strength: {strength} (score: {score}/5)"
+    if recommendations:
+        result += "\nRecommendations:"
+        for r in recommendations:
+            result += f"\n - {r}"
+    return result
 
 #Prevent automatically running if imported
 if __name__ == "__main__":
