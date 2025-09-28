@@ -6,7 +6,6 @@ import re
 #Create score system for each parameter to associate with strength
 def password_strength(password):
     score = 0
-    strength = ""
     recommendations = []
 
     #Parameter 1: Check to see if password is >= 8
@@ -54,12 +53,21 @@ def password_strength(password):
         result += "\nRecommendations:"
         for r in recommendations:
             result += f"\n - {r}"
-    return result
+    return result, strength
 
 #Prevent automatically running if imported
+#Also incorporates a while True loop to prompt user to try again until strong.
 if __name__ == "__main__":
-    user_input = input("Enter a password to check: ")
-    print(password_strength(user_input))
+    while True:
+        user_input = input("Enter a password to check: ")
+        result, strength = password_strength(user_input)
+        print(result)
+
+        if "Strong" in strength:
+            print("\U0001F389 Congratulations! Your password is strong!!")
+            break
+        else:
+            print("Try again.\n")
     
 
         
