@@ -1,7 +1,7 @@
 #Description:  
 This folder is for a password security checking application.  
 -Prompts the user to input a password to check.  
--Checks the input for patterns related to parameters.  
+-Checks the password for patterns related to security parameters.  
 -Scores the password accordingly and returns a strength.  
 -Produces recommendations based on which parameters are missed.  
 -Prompts the user to try again until a strong password is entered.   
